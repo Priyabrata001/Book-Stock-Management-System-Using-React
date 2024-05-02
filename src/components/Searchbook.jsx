@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import AdminHome from './AdminHome';
+import AdminHome from './NavBar';
 import { useNavigate } from 'react-router-dom';
 
 import './Style/search.css'

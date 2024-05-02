@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import './Style/Delete.css';
-import AdminHome from './AdminHome'
+import AdminHome from './NavBar'
 
 export default function Deletebook() {
  

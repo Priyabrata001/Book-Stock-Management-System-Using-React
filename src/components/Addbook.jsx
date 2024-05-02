@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import AdminHome from './AdminHome';
+import AdminHome from './NavBar';
 import './Style/Add.css';
 
 export default function Addbook() {
@@ -49,7 +49,7 @@ export default function Addbook() {
         console.log(data);
         if (result) {
           alert('register successfully');
-          navigate('/adminhome');
+          navigate('/Viewonly');
         } else {
           alert('error while uploading');
         }
@@ -61,8 +61,9 @@ export default function Addbook() {
  
 
   return (
-    <><AdminHome></AdminHome>
-
+    <>
+   
+   <AdminHome/>
       <div id='Add-Table' className="container my-3 py-3">
         <h1 className="text-center">Add Book</h1>
         <hr />

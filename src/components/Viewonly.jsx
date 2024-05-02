@@ -1,8 +1,8 @@
 import React,{ useEffect } from 'react'
 import { useState } from 'react'
-import AdminHome from './AdminHome';
+import AdminHome from './NavBar';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import './Style/View.css';
@@ -10,19 +10,11 @@ import './Style/View.css';
 export default function Viewbook() {
   const[data,setData]=useState("");
   useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await axios.get("https://localhost:7001/api/Books");
-    //     setData(response.data);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
+    
     axios.get("https://localhost:7001/api/Books")
     .then(response=>setData(response.data))
     .catch(err=>console.error(err))
 
-    // fetchData();
   }, []);
 
   const navigate = useNavigate();
