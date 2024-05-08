@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import "../components/Style/AdminLogin.css";
+import { validateEmail } from "../EmailValidate";
 
 import { createURL } from "./createURL";
 
@@ -14,10 +13,15 @@ function AdminLogin() {
   const navigate = useNavigate();
   const onLogin = () => {
     if (email.length === 0) {
-      toast.warn("please enter email");
-      alert("please enter email");
-    } else if (password.length === 0) {
-      toast.warn("please enter password");
+      if (password.length === 0) {
+        alert("please enter email & password Properly");
+      } else {
+        alert("please enter email");
+      }
+    } else if (!validateEmail(email)){
+      alert("Enter a proper mail.")
+    }
+    else if (password.length === 0) {
       alert("please enter password");
     } else {
       const url = createURL(
@@ -34,54 +38,70 @@ function AdminLogin() {
             navigate("/Addbook");
           } else {
             alert("Please Use Correct Email and Password");
-            toast.error("Invalid email or password");
           }
         })
         .catch((error) => {
           console.error("An error occurred:", error);
-          toast.error("An error occurred while logging in");
         });
     }
+  };
+  const handleForgotPassword = () => {
+    navigate("/contact-us");
   };
 
   return (
     <>
       <div className="loginpage">
-        <div className="row">
-          <div className="col"></div>
+        <div className="row justify-content-center">
           <div
-            className="col"
+            className="col-6 "
             style={{
-              boxShadow: "10px 10px 5px lightblue",
-              border: "1px solid blue",
-              marginTop: 150,
+              boxShadow: "5px 10px grey",
+              backgroundColor: "white",
+             
+              marginTop: 100,
+              marginRight: 100,
               borderRadius: 10,
             }}
+            // style="background-color: white;/* box-shadow: lightblue 10px 10px 5px; *//* border: 1px solid blue; */margin-top: 100px;margin-right: 100px;border-radius: 10px;"
           >
             <h2 className="title">Login</h2>
-            <div className="form-group">
-              <label htmlFor="">Email:</label>
+            <div
+              className="form-group"
+              style={{ backgroundColor: "#f5f5f5", padding: "10px" }}
+            >
+              <label htmlFor="email">Email:</label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
+                id="email"
                 className="form-control"
+                placeholder="Enter your email"
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="">Password:</label>
+            <div
+              className="form-group"
+              style={{ backgroundColor: "#f5f5f5", padding: "10px" }}
+            >
+              <label htmlFor="password">Password:</label>
               <input
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
+                id="password"
                 className="form-control"
+                placeholder="Enter your password"
               />
             </div>
             <div className="form-group mb-5">
-              <button onClick={onLogin} className="btn btn-success">
+              <button onClick={onLogin} className="btn btn-primary">
                 Login
               </button>
             </div>
+
+            <div className="form-group mb-5">
+              <i onClick={handleForgotPassword}>Forgot Password?</i>
+            </div>
           </div>
-         
         </div>
       </div>
     </>

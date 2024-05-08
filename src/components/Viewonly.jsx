@@ -2,7 +2,6 @@ import React,{ useEffect } from 'react'
 import { useState } from 'react'
 import AdminHome from './NavBar';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import './Style/View.css';
@@ -37,9 +36,8 @@ export default function Viewbook() {
                             <th>Author Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            {/* <th>Action</th> */}
-                          
-                        </tr>
+                         
+                          </tr>
                 </thead>
                 <tbody>
                         {data && data.map((d)=>

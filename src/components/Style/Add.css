@@ -1,7 +1,11 @@
+body{
+  background-color: #a4a4b878;
+}
 #Add-Table {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+  border-radius: 52px;
+  background-color: #c7c4c4ba;
+  margin-top: 2rem;
+}
   
   h1 {
     font-size: 2.5rem;
@@ -70,6 +74,9 @@
       font-size: 1.5rem;
     }
   
+   *{
+    margin-top: 3rem;
+   }
     .form {
       margin-bottom: 1rem;
     }
@@ -77,4 +84,8 @@
     button[type="submit"] {
       font-size: 0.9rem;
     }
+  }
+  .container{
+    
+    background-color: rgb(155, 159, 162);
   }

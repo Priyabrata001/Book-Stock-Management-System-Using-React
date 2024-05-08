@@ -38,7 +38,8 @@ function Profile() {
             <div>
                 <div className="row">
                     <div className="col"></div>
-                    <div className="col" style={{ boxShadow: "10px 10px 5px lightblue", border: "1px solid blue", borderRadius: 10, marginTop: 100 }}>
+                    <div className="col" style={{ border: "1px solid #212529", borderRadius: 10, marginTop: 100  ,padding: "1rem 4rem",
+    backgroundColor:" #ffffff80"}}>
                         <h2 className="title mb-3">Profile</h2>
                         {items.length > 0 && (
                             <>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState} from 'react'
 import AdminHome from './NavBar';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,13 +20,19 @@ export default function Viewbook() {
 
 
   const searchItem = () => {
-    fetch(`https://localhost:7001/bookName?FilterQuery=${searchTerm}`)
+    fetch(`https://localhost:7001/api/Books/bookName?FilterQuery=${searchTerm}`)
       .then(response => response.json())
       .then((result) => {
         console.log(result)
-        setData(result)
+        if (result.length === 0) {
+          alert("Provide Valid BookName or AuthorName");
+        } else {
+          setData(result);
+        }
       })
+     
   }
+ 
 
   return (
     <>  <AdminHome></AdminHome>
@@ -38,7 +44,7 @@ export default function Viewbook() {
 
           <div class="d-flex p-20 " role="search">
             <input class="form-control me-2" onChange={(e) => setSearchTerm(e.target.value)} type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success w-12" type="submit" onClick={searchItem}>Search</button>
+            <button class="btn btn-outline-success w-12"  type="submit" onClick={searchItem}>Search</button>
           </div>
         </div> <br />
         <table border={3} className='table table-striped' align="center">

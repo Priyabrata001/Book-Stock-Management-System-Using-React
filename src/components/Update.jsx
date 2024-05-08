@@ -12,7 +12,7 @@ export default function Viewbook() {
   const [Price, setPrice] = useState("");
   const [Quntity, setQuntity] = useState("");
 
-  const [ISBN, setISBN] = useState(null);
+  const [ISBN, setISBN] = useState("");
 
   const [data, setData] = useState([]);
 
@@ -54,18 +54,21 @@ export default function Viewbook() {
         console.log(response.data);
         if (response.status === 200) {
           alert("Data updated successfully!");
+
           getBooks();
+          setBookName("");
+
+          setAutherName("");
+          setPrice("");
+         setQuntity("");
+          setISBN("");
         }
       })
       .catch((error) => {
         console.error("Error updating data:", error);
       });
   }
-   
-
-
   
-
   return (
     <>
       <AdminHome></AdminHome>
@@ -88,9 +91,9 @@ export default function Viewbook() {
                   <th scope="col">ISBN</th>
 
                   <th scope="col">Book Name</th>
-                  <th scope="col">Auther Phone</th>
-                  <th scope="col">Price Gender</th>
-                  <th scope="col">Quantity Date</th>
+                  <th scope="col">Author Name</th>
+                  <th scope="col">Price </th>
+                  <th scope="col">Quantity</th>
 
                   <th scope="col" colSpan={2}>
                     Operations
@@ -129,7 +132,7 @@ export default function Viewbook() {
                 setBookName(e.target.value);
               }}
               placeholder="Book Name"
-            />{" "}
+            />
             <br />
             <br />
             <input
@@ -139,7 +142,7 @@ export default function Viewbook() {
                 setAutherName(e.target.value);
               }}
               placeholder="Auther Name"
-            />{" "}
+            />
             <br />
             <br />
             <input
@@ -149,7 +152,7 @@ export default function Viewbook() {
                 setPrice(e.target.value);
               }}
               placeholder="Price  "
-            />{" "}
+            />
             <br />
             <br />
             <input
@@ -159,19 +162,10 @@ export default function Viewbook() {
                 setQuntity(e.target.value);
               }}
               placeholder="Quantity"
-            />{" "}
+            />
             <br />
             <br />
-            <input
-              type="text"
-              value={ISBN}
-              onChange={(e) => {
-                setISBN(e.target.value);
-              }}
-              placeholder="ISBN Id"
-            />{" "}
-            <br />
-            <br />
+          
             <button className="btn btn-primary" onClick={updateBook}>
               Update Book
             </button>

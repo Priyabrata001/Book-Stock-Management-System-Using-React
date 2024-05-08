@@ -1,11 +1,14 @@
+body{
+  background-color: #a4a4b878;
+}
 #View-table {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #f2f2f2;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f5eded9e;
+}
   
   h1 {
     font-size: 2.5rem;

@@ -49,13 +49,17 @@ export default function Addbook() {
         console.log(data);
         if (result) {
           alert('register successfully');
-          navigate('/Viewonly');
+          //navigate('/Viewonly');
+          setBookName("");
+          setAutherName("");
+          setPrice("");
+          setQuntity("");
         } else {
           alert('error while uploading');
         }
       })
       .catch((error) => {
-        console.log(error.response.data.errors);
+        console.log("An error occurred:", error);
       });
   };
  
@@ -64,7 +68,7 @@ export default function Addbook() {
     <>
    
    <AdminHome/>
-      <div id='Add-Table' className="container my-3 py-3">
+      <div id='Add-Table' className="container py-3">
         <h1 className="text-center">Add Book</h1>
         <hr />
         <div class="row my-4 h-100">
@@ -84,14 +88,14 @@ export default function Addbook() {
               </div>
 
               <div className="form my-3">
-                <label htmlFor="AutherName">AutherName</label>
+                <label htmlFor="AuthorName">AuthorName</label>
                 <input
                   type="text"
                   className="form-control"
                   onChange={(e) => setAutherName(e.target.value)}
                   id="AuthorNmae"
                   value={AutherName}
-                  placeholder="please enter the author name"
+                  placeholder="Enter the author name"
                 />
               </div>
               <div className="form  my-3">

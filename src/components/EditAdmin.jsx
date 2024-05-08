@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { validateEmail } from "../EmailValidate";
 import AdminHome from './NavBar';
 
 const EditAdmin = () => {
@@ -15,6 +15,21 @@ const EditAdmin = () => {
 
   const onSave = () => {
     const token = sessionStorage["token"];
+    if(name.length===0){
+      alert("enter the name");
+    }
+    else if (email.length === 0) {
+      if (password.length === 0) {
+        alert("please enter email & password Properly");
+      } else {
+        alert("please enter email");
+      }
+    } else if (!validateEmail(email)){
+      alert("Enter a proper mail.")
+    }
+    else if (password.length === 0) {
+      alert("please enter password");
+    } else {
     const data = {
       adminId: id,
       adminName: name,
@@ -32,20 +47,22 @@ const EditAdmin = () => {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-        },
+        }
       })
       .then((response) => {
         if (response.status === 200) {
-          toast.success("successfully update user");
+          alert("successfully update user");
+         
           navigate("/profile");
         } else {
-          toast.error("error while update user");
+          alert("error while update user");
         }
       })
       .catch((error) => {
         console.error(error);
-        toast.error("Error updating user: " + error.message);
+        alert("Password must be 8 character long and it should contain a capital letter and small letter and number and at least one special character & Provide Valid Email " + error.message);
       });
+    }
   };
   
   const loadProfile = () => {

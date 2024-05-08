@@ -1,9 +1,24 @@
+body{
+
+  background-position:left;
+
+  background-repeat: no-repeat;
+  background-size: 100vh;
+}
 .loginpage
 {
-    background-image: url("../../../public/MicrosoftTeams-image\ \(2\).png");
-    background-repeat: no-repeat;
 
-    background-position:left;
+  padding-left: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
+   
 }
+.form-group i {
+    cursor: pointer;
+    color: #0074d9; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+  }
+  
+  .form-group i:hover {
+    color: #0056b3; /* Color changes on hover */
+  }
